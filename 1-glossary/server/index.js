@@ -1,6 +1,9 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const {updateAndSave,
+      getAll} = require('./db.js');
+const {sampleData} = require('./SampleData.js');
 
 const app = express();
 
@@ -8,11 +11,20 @@ const app = express();
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get('/', (req, res) => {
-  //get all data from DB
+  getAll()
+  .then((data) => {
+    if (data.length !== 0) {
+  res.json(data)
+    }
+  res.json(sampleData);
+})
+  .catch((err) => {
+    console.log(err)
+  })
 });
 
 app.get('/entry', (req, res) => {
-  //get specific entry
+  getAll();
 });
 
 app.post('/entry', (req, res) => {
