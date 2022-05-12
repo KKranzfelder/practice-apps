@@ -2,7 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { updateAndSave,
-  getAll } = require('./db.js');
+        getAll,
+        deleteEntry } = require('./db.js');
 const { sampleData } = require('./SampleData.js');
 
 const app = express();
@@ -12,14 +13,14 @@ app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
 app.get('/entries', (req, res) => {
+  console.log('GetAll Request Triggered:')
   getAll()
     .then((data) => {
-      console.log(data);
       if (data.length !== 0) {
         res.json(data)
+      } else {
+        res.send(sampleData);
       }
-      console.log(sampleData);
-      res.send(sampleData);
     })
     .catch((err) => {
       console.log(err)
@@ -27,7 +28,7 @@ app.get('/entries', (req, res) => {
 });
 
 app.get('/entry', (req, res) => {
-  console.log(req.body)
+  console.log('Get Request Triggered:', req.body)
   getAll(req.body)
     .then((data) => {
       res.send('entry get request done')
@@ -35,22 +36,25 @@ app.get('/entry', (req, res) => {
 });
 
 app.post('/entry', (req, res) => {
-  console.log(req.body);
+  console.log('Post Request Triggered: ', req.body);
   updateAndSave(req.body)
-  .then(() => {res.status(201).send('POST request completed')});
+    .then(() => { res.status(201).send('POST request completed') });
 
 });
 
 app.put('/entry', (req, res) => {
-  console.log(req.body)
-  getAll(req.body)
+  console.log('Put Request Triggered', req.body)
+  updateAndSave(req.body)
     .then((data) => {
-      res.send('entry get request done')
+      res.status(201).send('entry put request done')
     });
 });
 
 app.delete('/entry', (req, res) => {
-  //delete entry
+  console.log('Delete Request Triggered: ', req.body);
+  deleteEntry(req.body.word)
+  .then(() => res.sendStatus(200))
+  .catch(err => console.log(err));
 })
 
 app.listen(process.env.PORT);

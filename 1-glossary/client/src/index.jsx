@@ -19,7 +19,7 @@ class App extends React.Component {
       .then((res) => {
         console.log('response data within fetchData: ', res.data);
         this.setState({
-          words: res.data
+          words: res.data,
         });
       });
   }
@@ -28,10 +28,15 @@ class App extends React.Component {
     this.fetchData('/entries');
   }
 
+
+
   render() {
+
     return (
       <div>
-        <Glossary words={this.state.words}/>
+        <Glossary
+        words={this.state.words}
+        fetch={this.fetchData}/>
       </div>
     )
   }

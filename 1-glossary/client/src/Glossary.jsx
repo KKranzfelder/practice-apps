@@ -1,14 +1,17 @@
 import React from 'react';
 import Entry from './Entry.jsx';
 
-const Glossary = ({words}) => {
+const Glossary = ({words, edit, fetch}) => {
   return (
     <div className="glossary">
       {words.map((word) => (
-        <Entry word={word}/>
-      ))}/>
+        <Entry
+        key={word.word}
+        word={word}
+        fetch={fetch}/>
+      ))}
     </div>
-  )
+  );
 };
 
-export Glossary as default;
+export default Glossary;

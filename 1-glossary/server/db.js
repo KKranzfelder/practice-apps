@@ -34,14 +34,15 @@ getAll = (query={}) => {
   return Entry.find(query);
 }
 
-// getOne = (query) => {
-//   return Entry.find({word: query});
-// }
+deleteEntry = (query) => {
+  return Entry.deleteOne({word: query});
+}
 
 
 module.exports = {
   updateAndSave,
-  getAll
+  getAll,
+  deleteEntry
 }
 // 1. Use mongoose to establish a connection to MongoDB
 // 2. Set up any schema and models needed by the app
