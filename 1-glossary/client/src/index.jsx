@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import Glossary from "./Glossary.jsx";
+import AddWord from "./AddWord.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <AddWord fetch={this.fetchData}/>
         <Glossary
         words={this.state.words}
         fetch={this.fetchData}/>

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class AddWord extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class AddWord extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     let date = Date();
     (console.log(date))
     axios.post('/entry', {
@@ -21,6 +23,8 @@ class AddWord extends React.Component {
       definition: this.state.newDefinition,
       createdAt: date
     })
+    .then(() => this.props.fetch('/entries'))
+    .catch(err => console.log(err));
   }
 
   handleNewWord(event) {
@@ -40,6 +44,11 @@ class AddWord extends React.Component {
   }
 
   handleCancel(event) {
+    event.preventDefault();
+    this.setState({
+      newWord: '',
+      newDefinition: ''
+    });
   }
 
   render() {
@@ -60,6 +69,7 @@ class AddWord extends React.Component {
           <textarea
             value={this.state.newDefinition}
             onChange={this.handleNewDef}
+            placeholder='Enter new definition...'
           />
         </label>
         <input type='submit' value='Submit' />
