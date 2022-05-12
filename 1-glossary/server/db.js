@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost:3000/glossary');
+mongoose.connect('mongodb://localhost/glossary');
+mongoose.connection.on('error', err => {
+  console.log(err);
+});
 
 const { Schema } = mongoose;
 
 const entrySchema = new Schema({
-  id: Number,
   word: String,
   definition: String,
   createdAt: String,
@@ -13,7 +15,8 @@ const entrySchema = new Schema({
 const Entry = mongoose.model('Entry', entrySchema);
 
 updateAndSave = (entry) => {
-  return findOneAndUpdate(
+  console.log('entry in updateAndSave', entry)
+  return Entry.findOneAndUpdate(
     {
       word: entry.word.toLowerCase()
     },
@@ -27,8 +30,8 @@ updateAndSave = (entry) => {
   );
 };
 
-getAll = () => {
-  return Entry.find()
+getAll = (query={}) => {
+  return Entry.find(query);
 }
 
 // getOne = (query) => {
