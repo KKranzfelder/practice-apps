@@ -11,7 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       words: [],
-      displayedWords:[]
+      displayedWords: [],
+      hasMatchingTerms: true
     }
     this.fetchData = this.fetchData.bind(this);
     this.setDisplay = this.setDisplay.bind(this);
@@ -24,22 +25,34 @@ class App extends React.Component {
         console.log('response data within fetchData: ', res.data);
         this.setState({
           words: res.data,
-          displayedWords: res.data
+          displayedWords: res.data,
+          hasMatchingTerms: true
         });
       });
   }
 
   setDisplay(input) {
+    console.log('setDisplay was Triggered');
     let matchedWords = [];
     this.state.words.forEach((word) => {
-      if(word.word.includes(input)) {
+      if (word.word.includes(input)) {
         matchedWords.push(word);
       }
-    })
-    this.setState({
-      words: this.state.words,
-      displayedWord: matchedWords
     });
+    if (matchedWords.length > 0) {
+      console.log(matchedWords, input);
+      this.setState({
+        words: this.state.words,
+        displayedWords: matchedWords,
+        hasMatchingTerms: true
+      });
+    } else {
+      this.setState({
+        words: this.state.words,
+        displayedWords: this.state.words,
+        hasMatchingTerms: false
+      });
+    }
   }
 
   componentDidMount() {
@@ -49,14 +62,22 @@ class App extends React.Component {
 
 
   render() {
+    let view;
+    let hasMatchingTerms = this.state.hasMatchingTerms;
+    if (hasMatchingTerms) {
+      view = <Glossary
+        words={this.state.displayedWords}
+        fetch={this.fetchData} />;
+    } else {
+      console.log('no matching terms');
+      view = <h3>No matching terms found.</h3>;
+    }
 
     return (
       <div>
-        <AddWord fetch={this.fetchData}/>
-        <Search words={this.state.words} display={this.setDisplay}/>
-        <Glossary
-        words={this.state.words}
-        fetch={this.fetchData}/>
+        <AddWord fetch={this.fetchData} />
+        <Search words={this.state.words} display={this.setDisplay} />
+        {view}
       </div>
     )
   }

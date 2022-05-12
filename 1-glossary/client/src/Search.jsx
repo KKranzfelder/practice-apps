@@ -2,6 +2,7 @@ import React from "react";
 
 class Search extends React.Component {
   constructor(props) {
+    super(props);
     this.state = {
       value: ''
     }
@@ -14,7 +15,12 @@ class Search extends React.Component {
     event.preventDefault();
     this.setState({
       value: event.target.value
-    })
+    });
+    this.props.display(event.target.value);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
     this.props.display(this.state.value);
   }
 
@@ -27,6 +33,7 @@ class Search extends React.Component {
           type='text'
           value={this.state.value}
           placeholder='Search saved terms...'
+          onChange={this.handleChange}
           />
         </label>
         <input type='submit' value='Submit'/>
