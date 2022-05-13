@@ -70,14 +70,27 @@ class App extends React.Component {
         fetch={this.fetchData} />;
     } else {
       console.log('no matching terms');
-      view = <h3>No matching terms found.</h3>;
+      view = <h3 className='noTerms'>No matching terms found.</h3>;
     }
 
     return (
-      <div>
-        <AddWord fetch={this.fetchData} />
-        <Search words={this.state.words} display={this.setDisplay} />
-        {view}
+      <div className='app'>
+        <div className='header'>
+          <div className='title'>
+          <h1>HiDef</h1>
+          </div>
+          <div className='search'>
+            <Search words={this.state.words} display={this.setDisplay} />
+          </div>
+        </div>
+        <div className='body'>
+          <div className='addWord'>
+            <AddWord fetch={this.fetchData} />
+          </div>
+          <div className='terms'>
+            {view}
+          </div>
+        </div>
       </div>
     )
   }

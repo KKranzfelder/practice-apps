@@ -27,15 +27,12 @@ class Search extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Search saved terms:
           <input
           type='text'
           value={this.state.value}
           placeholder='Search saved terms...'
           onChange={this.handleChange}
           />
-        </label>
         <input type='submit' value='Submit'/>
       </form>
     )

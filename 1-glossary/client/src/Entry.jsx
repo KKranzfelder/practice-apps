@@ -34,10 +34,10 @@ class Entry extends React.Component {
     let view;
 
     if (editMode) {
-      view = <EditMode cancel={this.onEditClick} word={word} fetch={fetch}/>;
+      view = <EditMode className='editMode' cancel={this.onEditClick} word={word} fetch={fetch}/>;
     } else {
       view = <>
-      <p>{word.definition}</p>
+      <p className='definition'>{word.definition}</p>
       <span>{word.createdAt}</span>
       <div className="entryOptions">
         <button value="Edit" onClick={this.onEditClick}>Edit Entry</button>

@@ -1,10 +1,10 @@
 /**
- * 
+ *
  * Based on Josh Comeau's CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/.
- * 
+ *
  * Feel free to edit this file as needed.
- * 
- */ 
+ *
+ */
 
 *,
 *::before,
@@ -57,4 +57,59 @@ main {
   max-width: 840px;
   padding: 16px;
   margin: auto;
+}
+
+#root {
+  background-color: olive;
+  width: 100vh;
+  height: 100vh;
+}
+
+.app{
+  color:rgb(22, 33, 8);
+}
+
+.header{
+  width: 100%;
+  height: 10%;
+  background-color: rgba(255, 235, 205, .5);
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0px;
+}
+.body {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.title {
+  margin-left: 5%;
+  font-family: 'Koulen', cursive;
+}
+
+.addWord {
+  width: 100%;
+  margin: 5px auto;
+}
+
+.cancelAdd, .submitWord {
+  width: 75px;
+  height: 30px;
+  margin: 2px 2px;
+}
+
+.search {
+  width: 60%;
+  margin: 3px 5px;
+  top: 50px;
+}
+
+.terms {
+  margin: 2px auto;
+}
+
+.definition{
+  font-family: 'Raleway', sans-serif;
 }

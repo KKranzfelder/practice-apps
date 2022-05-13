@@ -53,7 +53,7 @@ class AddWord extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className='addWord'>
+      <form onSubmit={this.handleSubmit} className='submitWord'>
         <label>
           Add new word:
           <input
@@ -73,7 +73,10 @@ class AddWord extends React.Component {
           />
         </label>
         <input type='submit' value='Submit' />
-        <button value='Cancel' onClick={this.handleCancel}>
+        <button
+        value='Cancel'
+        onClick={this.handleCancel}
+        className='cancelAdd'>
           Cancel
         </button>
       </form>
