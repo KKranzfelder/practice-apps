@@ -88,6 +88,7 @@ main {
 .title {
   margin-left: 5%;
   font-family: 'Koulen', cursive;
+  text-shadow: #FC0 1px 0 10px;
 }
 
 .addWord {
@@ -99,8 +100,8 @@ main {
 }
 
 .cancelAdd, .submitWord {
-  width: 75px;
-  height: 30px;
+  width: 70px;
+  height: 25px;
   margin: 2px 2px;
 }
 
@@ -116,8 +117,15 @@ main {
   margin: 2px auto;
 }
 
+.entry{
+  margin: 30px auto;
+}
+
 .word {
   font-family: 'Koulen', cursive;
+  text-shadow: #FC0 1px 0;
+  background-color: rgba(245, 245, 220, .3);
+  width: 30%;
 }
 
 .definition, date{
@@ -131,4 +139,5 @@ main {
 
 .date{
   font-size: smaller;
+  color: white;
 }
