@@ -81,7 +81,8 @@ main {
 .body {
   display: flex;
   justify-content: space-around;
-  width: 60%;
+  width: 80%;
+  margin: 10%;
 }
 
 .title {
@@ -90,6 +91,9 @@ main {
 }
 
 .addWord {
+  position: fixed;
+  top: 20%;
+  left: 50px;
   width: 100%;
   margin: 5px auto;
 }
@@ -107,9 +111,24 @@ main {
 }
 
 .terms {
+  flex-grow: 2;
+  height: 100%;
   margin: 2px auto;
 }
 
-.definition{
+.word {
+  font-family: 'Koulen', cursive;
+}
+
+.definition, date{
   font-family: 'Raleway', sans-serif;
+}
+
+.definition {
+  background-color: rgba(245, 245, 220, .7);
+  padding: 5px;
+}
+
+.date{
+  font-size: smaller;
 }

@@ -38,7 +38,7 @@ class Entry extends React.Component {
     } else {
       view = <>
       <p className='definition'>{word.definition}</p>
-      <span>{word.createdAt}</span>
+      <span className='date'>{word.createdAt}</span>
       <div className="entryOptions">
         <button value="Edit" onClick={this.onEditClick}>Edit Entry</button>
         <button value="Delete" onClick={this.onDeleteClick}>Delete Entry</button>
@@ -48,7 +48,7 @@ class Entry extends React.Component {
 
     return(
       <div className="entry">
-        <h3>{word.word}</h3>
+        <h3 className='word'>{word.word}</h3>
         {view}
       </div>
     )
