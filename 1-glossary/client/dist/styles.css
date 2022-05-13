@@ -58,9 +58,13 @@ main {
   padding: 16px;
   margin: auto;
 }
+body{
+  background-color: rgb(177, 181, 200);
+}
+
 
 #root {
-  background-color: olive;
+  background-color: rgb(34, 28, 45);
   width: 100vh;
   height: 100vh;
 }
@@ -124,8 +128,11 @@ main {
 .word {
   font-family: 'Koulen', cursive;
   text-shadow: #FC0 1px 0;
-  background-color: rgba(245, 245, 220, .3);
+  background-color: rgba(245, 245, 220, .5);
   width: 30%;
+  padding: 2px 3px;
+  margin: 0 0 0 10px;
+  border-radius: 5px 5px 0 0;
 }
 
 .definition, date{
@@ -135,9 +142,11 @@ main {
 .definition {
   background-color: rgba(245, 245, 220, .7);
   padding: 5px;
+  border-radius: 5px;
 }
 
 .date{
   font-size: smaller;
   color: white;
 }
+

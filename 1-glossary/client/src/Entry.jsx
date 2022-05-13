@@ -22,9 +22,9 @@ class Entry extends React.Component {
     let word = this.props.word;
     axios.delete('/entry', {
       data: { word: word.word }
-     })
-    .then(() => this.props.fetch('/entries'))
-    .catch(err => console.log(err));
+    })
+      .then(() => this.props.fetch('/entries'))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -34,21 +34,23 @@ class Entry extends React.Component {
     let view;
 
     if (editMode) {
-      view = <EditMode className='editMode' cancel={this.onEditClick} word={word} fetch={fetch}/>;
+      view = <EditMode className='editMode' cancel={this.onEditClick} word={word} fetch={fetch} />;
     } else {
       view = <>
-      <p className='definition'>{word.definition}</p>
-      <span className='date'>{word.createdAt}</span>
-      <div className="entryOptions">
-        <button value="Edit" onClick={this.onEditClick}>Edit Entry</button>
-        <button value="Delete" onClick={this.onDeleteClick}>Delete Entry</button>
-      </div>
+        <p className='definition'>{word.definition}</p>
+        <span className='date'>{word.createdAt}</span>
+        <div className="entryOptions">
+          <button value="Edit" onClick={this.onEditClick}>Edit Entry</button>
+          <button value="Delete" onClick={this.onDeleteClick}>Delete Entry</button>
+        </div>
       </>;
     }
 
-    return(
+    return (
       <div className="entry">
-        <h3 className='word'>{word.word}</h3>
+        <div className="word">
+          <h3 >{word.word}</h3>
+        </div>
         {view}
       </div>
     )
