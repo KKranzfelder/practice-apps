@@ -18,14 +18,21 @@ app.use(logger);
 
 // Serves up all static and generated assets in ../client/dist.
 app.use(express.static(path.join(__dirname, "../client/dist")));
+app.use(json());
 
-/**** 
- * 
- * 
- * Other routes here....
- *
- * 
- */
+//post /user
+//get /user
+//update /user
+
+//post /address
+//get /address
+//update /address
+
+//post /card
+//get /card
+//update /card
+
+
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
