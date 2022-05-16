@@ -2,18 +2,21 @@ import React from "react";
 import { render } from "react-dom";
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Checkout from './Checkout.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLoggedIn: false,
-      showHome: true,
-      showCheckout: false,
+      showCheckout: true,
       showUserForm: false,
       showAddressForm: false,
       showCardForm: false,
-      UserInfo: {}
+      showConfirmation: false,
+      userInfo: {},
+      addressInfo: {},
+      cardInfo: {}
     }
     this.togglePage = this.togglePage.bind(this);
   }
@@ -21,8 +24,8 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/user')
       .then(res =>
-        this.setState({isLoggedIn: true}),
-        this.setState({UserInfo: res.data}))
+        console.log(res.data),
+      )
       .catch(err => console.log(err));
   }
 
@@ -34,7 +37,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Hello, World!</p>
+        <Checkout
+        loggedIn={this.state.isLoggedIn}
+        user={this.state.userInfo}
+        togglePage={this.togglePage}
+        />
         <p>
           <code>Page Cookie: {JSON.stringify(document.cookie, undefined, "\t")}</code>
         </p>

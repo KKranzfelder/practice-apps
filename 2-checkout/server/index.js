@@ -38,9 +38,8 @@ app.post('/user', (req, res) => {
 
 //get /user
 app.get('/user', (req, res) => {
-  var sampleData = "kdnfdkssfeegdd-fkaofnd";
   console.log(req.session_id);
-  Model.getUserData(sampleData)
+  Model.getUserData(req.session_id)
     .then((result) =>
     res.status(200).send(result[0][0]))
     .catch(err => console.log(err));

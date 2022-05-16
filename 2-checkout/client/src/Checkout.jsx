@@ -1,17 +1,22 @@
 import React from 'react';
 
-var Checkout = ({loggedIn, User}) {
-  var greeting;
-  if (loggedIn) {
-    greeting = <h3>Hello {User.name}! Complete your purchase?</h2>
+var Checkout = ({loggedIn, user, togglePage}) => {
+  let greeting = '';
+  if (loggedIn === true) {
+    greeting = <h3>Hello {user.name}! Complete your purchase?</h3>;
   } else {
-    greeting = <h3>Welcome! Sign up and checkout?</h3>
+    greeting = <h3>Welcome! Sign up and checkout?</h3>;
   }
+
+  var checkOutClicked = (event) => {
+    event.preventDefault();
+    togglePage('Checkout', 'UserForm');
+  };
 
   return (
     <>
     {greeting}
-    <button value='checkout' onClick={}>Checkout</button>
+    <button value='checkout' onClick={checkOutClicked}>Checkout</button>
     </>
   )
 };
