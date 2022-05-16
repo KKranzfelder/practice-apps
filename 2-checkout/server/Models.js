@@ -23,7 +23,7 @@ postAddressData = (data) => {
 };
 
 postCardData = (data) => {
-  return db.queryAsync('INSERT INTO Cards (user, ccNum, cc_exp, CCV) VALUES (?)', [data]);
+  return db.queryAsync('INSERT INTO Cards (user, ccNum, cc_exp, CCV) (user, ccNum, cc_exp, CCV) VALUES (?)', [data]);
 };
 
 

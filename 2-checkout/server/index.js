@@ -22,6 +22,7 @@ app.use(logger);
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
+//--------USER ROUTES---------
 
 //post /user
 app.post('/user', (req, res) => {
@@ -54,20 +55,22 @@ app.delete('/user', (req, res) => {
 
 })
 
+//----------ADDRESS ROUTES-----------
+
 //post /address
 //get /address
 app.get('/address', (req, res) => {
   console.log(db.queryAsync(
     `SELECT id FROM Users WHERE s_id = ?`,
-    req.session_id))
-
-  var sampleData;
+    req.session_id));
   Model.getAddressData(sampleData)
     .then((result) =>
     res.status(200).send(result[0][0]))
     .catch(err => console.log(err));
 });
 //update /address
+
+//-----------CARD ROUTES--------------
 
 //post /card
 //get /card
